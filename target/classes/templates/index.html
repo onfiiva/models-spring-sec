@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="../static/styles.css" th:href="@{styles.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet">
+    <title>Models</title>
+</head>
+<body>
+<div class="page">
+    <h1 class="main_title _title">Models</h1>
+
+    <!-- Модель House -->
+    <div class="first_model_name _subtitle">Houses</div>
+    <form action="/search" method="GET">
+        <div class="_container">
+            <input class="_input" type="hidden" name="modelName" th:value="House"/>
+            <input class="_input" type="text" name="fieldName" placeholder="Insert search field"/>
+            <input class="_input" type="text" name="fieldValue" placeholder="Insert value"/>
+            <button class="_button" type="submit">Find</button>
+        </div>
+    </form>
+    <div th:if="${searchResults != null}">
+        <div th:each="result : ${searchResults}">
+            <a class="_button" th:href="@{'/show/house/{id}'(id=${result.id})}" th:text="${result.number}">model</a>
+        </div>
+    </div>
+    <div th:unless="${searchResults != null}">
+        <div th:each="house : ${houses}">
+            <a class="_button" th:href="@{'/show/house/{id}'(id=${house.id})}" th:text="${house.number}">model</a>
+        </div>
+    </div>
+    <div class="_button_add">
+        <a th:href="@{/new/house}">Create new</a>
+    </div>
+
+    <!-- Модель Job -->
+    <div class="second_model_name _subtitle">Jobs</div>
+    <form action="/search" method="GET">
+        <div class="_container">
+            <input class="_input" type="hidden" name="modelName" th:value="job"/>
+            <input class="_input" type="text" name="fieldName" placeholder="Insert search field"/>
+            <input class="_input" type="text" name="fieldValue" placeholder="Insert value"/>
+            <button class="_button" type="submit">Find</button>
+        </div>
+    </form>
+    <div th:each="job : ${jobs}">
+        <a class="_button" th:href="@{'/show/job/{id}'(id=${job.id})}" th:text="${job.name}">model</a>
+    </div>
+    <div class="_button_add">
+        <a th:href="@{/new/job}">Create new</a>
+    </div>
+
+    <!-- Модель Person -->
+    <div class="first_model_name _subtitle">People</div>
+    <form action="/search" method="GET">
+        <div class="_container">
+            <input class="_input" type="hidden" name="modelName" th:value="person"/>
+            <input class="_input" type="text" name="fieldName" placeholder="Insert search field"/>
+            <input class="_input" type="text" name="fieldValue" placeholder="Insert value"/>
+            <button class="_button" type="submit">Find</button>
+        </div>
+    </form>
+    <div th:each="person : ${people}">
+        <a class="_button" th:href="@{'/show/person/{id}'(id=${person.id})}" th:text="${person.surname}">model</a>
+    </div>
+    <div class="_button_add">
+        <a th:href="@{/new/person}">Create new</a>
+    </div>
+
+    <!-- Модель Pet -->
+    <div class="third_model_name _subtitle">Pets</div>
+    <form action="/search" method="GET">
+        <div class="_container">
+            <input class="_input" type="hidden" name="modelName" th:value="pet"/>
+            <input class="_input" type="text" name="fieldName" placeholder="Insert search field"/>
+            <input class="_input" type="text" name="fieldValue" placeholder="Insert value"/>
+            <button class="_button" type="submit">Find</button>
+        </div>
+    </form>
+    <div th:each="pet : ${pets}">
+        <a class="_button" th:href="@{'/show/pet/{id}'(id=${pet.id})}" th:text="${pet.name}">model</a>
+    </div>
+    <div class="_button_add">
+        <a th:href="@{/new/pet}">Create new</a>
+    </div>
+
+    <!-- Модель Transport -->
+    <div class="fourth_model_name _subtitle">Transport</div>
+    <form action="/search" method="GET">
+        <div class="_container">
+            <input class="_input" type="hidden" name="modelName" th:value="transport"/>
+            <input class="_input" type="text" name="fieldName" placeholder="Insert search field"/>
+            <input class="_input" type="text" name="fieldValue" placeholder="Insert value"/>
+            <button class="_button" type="submit">Find</button>
+        </div>
+    </form>
+    <div th:each="transport : ${transports}">
+        <a class="_button" th:href="@{'/show/transport/{id}'(id=${transport.id})}" th:text="${transport.company} + ' ' + ${transport.model}">model</a>
+    </div>
+    <div class="_button_add">
+        <a th:href="@{/new/transport}">Create new</a>
+    </div>
+
+
+</div>
+</body>
+</html>

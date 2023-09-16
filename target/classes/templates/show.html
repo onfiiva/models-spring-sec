@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="../static/styles.css" th:href="@{/styles.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet">
+    <title>Show Model</title>
+</head>
+<body>
+<div class="page">
+    <h1 class="main_title _title">Model Details</h1>
+
+    <div th:if="${modelName == 'house'}">
+        <div class="_subtitle">House Details:</div>
+        <div class="_text_container _container">
+            <p class="_text">House Type: <span th:text="${modelObject.type}"></span></p>
+            <p class="_text">House Street: <span th:text="${modelObject.street}"></span></p>
+            <p class="_text">House Number: <span th:text="${modelObject.number}"></span></p>
+            <p class="_text">House Owner: <span th:text="${modelObject.owner}"></span></p>
+            <p class="_text">House Construction Date: <span th:text="${modelObject.constructionDate}"></span></p>
+
+            <a class="_button" th:href="@{'/edit/house/{id}'(id=${modelObject.id})}">Edit</a>
+
+
+        <form th:action="@{/delete}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <input type="hidden" th:name="id" name="id" th:value="${modelObject.id}" />
+            <button class="_button" type="submit">Delete</button>
+        </form>
+        </div>
+    </div>
+
+    <div th:if="${modelName == 'person'}">
+        <div class="_subtitle">Person Details:</div>
+        <div class="_text_container _container">
+            <p class="_text">Name: <span th:text="${modelObject.surname}"></span></p>
+            <p class="_text">Surname: <span th:text="${modelObject.name}"></span></p>
+            <p class="_text">Patronymic: <span th:text="${modelObject.patronymic}"></span></p>
+            <p class="_text">Age: <span th:text="${modelObject.age}"></span></p>
+
+            <!-- Добавляем условие для вывода информации о доме и работе, если они есть -->
+            <div th:if="${house != null}">
+                <p class="_text">House: <span th:text="${modelObject.house.number}"></span></p>
+            </div>
+            <div th:if="${job != null}">
+                <p class="_text">Job: <span th:text="${modelObject.job.name}"></span></p>
+            </div>
+
+            <div th:each="pet : ${modelObject.pets}">
+                <p class="_text">Pet: <span th:text="${pet.name}"></span></p>
+            </div>
+            <div th:each="transport : ${modelObject.transports}">
+                <p class="_text">Transport: <span th:text="${transport.model}"></span></p>
+            </div>
+
+            <a class="_button" th:href="@{'/edit/person/{id}'(id=${modelObject.id})}">Edit</a>
+
+            <form th:action="@{/delete}" method="post" th:object="${modelObject}">
+                <input type="hidden" th:name="modelName" th:value="${modelName}" />
+                <input type="hidden" th:name="id" name="id" th:value="${modelObject.id}" />
+                <button class="_button" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div th:if="${modelName == 'job'}">
+        <div class="_subtitle">Job Details:</div>
+        <div class="_text_container _container">
+            <p class="_text">Name: <span th:text="${modelObject.name}"></span></p>
+            <p class="_text">Type: <span th:text="${modelObject.type}"></span></p>
+            <p class="_text">Slogan: <span th:text="${modelObject.slogan}"></span></p>
+            <p class="_text">Employees: <span th:text="${modelObject.employees}"></span></p>
+            <p class="_text">Budget: <span th:text="${modelObject.budget}"></span></p>
+
+            <a class="_button" th:href="@{'/edit/job/{id}'(id=${modelObject.id})}">Edit</a>
+
+
+        <form th:action="@{/delete}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <input type="hidden" th:name="id" name="id" th:value="${modelObject.id}" />
+            <button class="_button" type="submit">Delete</button>
+        </form>
+        </div>
+    </div>
+
+    <div th:if="${modelName == 'pet'}">
+        <div class="_subtitle">Pet Details:</div>
+        <div class="_text_container _container">
+            <p class="_text">Name: <span th:text="${modelObject.name}"></span></p>
+            <p class="_text">Breed: <span th:text="${modelObject.breed}"></span></p>
+            <p class="_text">Type: <span th:text="${modelObject.type}"></span></p>
+            <p class="_text">Age: <span th:text="${modelObject.age}"></span></p>
+            <p class="_text">Gender: <span th:text="${modelObject.gender}"></span></p>
+
+            <a class="_button" th:href="@{'/edit/pet/{id}'(id=${modelObject.id})}">Edit</a>
+
+
+        <form th:action="@{/delete}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <input type="hidden" th:name="id" name="id" th:value="${modelObject.id}" />
+            <button class="_button" type="submit">Delete</button>
+        </form>
+        </div>
+    </div>
+
+    <div th:if="${modelName == 'transport'}">
+        <div class="_subtitle">Transport Details:</div>
+        <div class="_text_container _container">
+            <p class="_text">Type: <span th:text="${modelObject.type}"></span></p>
+            <p class="_text">Company: <span th:text="${modelObject.company}"></span></p>
+            <p class="_text">Model: <span th:text="${modelObject.model}"></span></p>
+            <p class="_text">Series: <span th:text="${modelObject.series}"></span></p>
+            <p class="_text">Color: <span th:text="${modelObject.color}"></span></p>
+
+            <a class="_button" th:href="@{'/edit/transport/{id}'(id=${modelObject.id})}">Edit</a>
+
+
+        <form th:action="@{/delete}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <input type="hidden" th:name="id" name="id" th:value="${modelObject.id}" />
+            <button class="_button" type="submit">Delete</button>
+        </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

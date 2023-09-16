@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="../static/styles.css" th:href="@{/styles.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet">
+    <title>New Model</title>
+</head>
+<body>
+<div class="page">
+    <h1 class="main_title _title">New Model</h1>
+    <!-- Поля ввода для модели House -->
+    <div th:if="${modelName == 'house'}">
+        <form th:action="@{/add/house}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <div class="_container">
+                <div class="_subtitle">House Details:</div>
+                <label class="_text" for="type">House Type:</label>
+                <input class="_input" type="text" id="type" name="type" /><br>
+
+                <label class="_text" for="street">House Street:</label>
+                <input class="_input" type="text" id="street" name="street" /><br>
+
+                <label class="_text" for="number">House Number:</label>
+                <input class="_input" type="number" id="number" name="number" /><br>
+
+                <label class="_text" for="owner">House Owner:</label>
+                <input class="_input" type="text" id="owner" name="owner" /><br>
+
+                <label class="_text" for="constructionDate">House Construction Date:</label>
+                <input class="_input" type="text" id="constructionDate" name="constructionDate" /><br>
+
+
+                <!-- Кнопка для добавления элемента в модель -->
+                <button class="_button" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Поля ввода для модели Person -->
+    <div th:if="${modelName == 'person'}">
+        <form th:action="@{/add/person}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <div class="_container">
+                <div class="_subtitle">Person Details:</div>
+                <label class="_text" for="name">Name:</label>
+                <input class="_input" type="text" id="name" name="name" /><br>
+
+                <label class="_text" for="surname">Surname:</label>
+                <input class="_input" type="text" id="surname" name="surname" /><br>
+
+                <label class="_text" for="patronymic">Patronymic:</label>
+                <input class="_input" type="text" id="patronymic" name="patronymic" /><br>
+
+                <label class="_text" for="age">Age:</label>
+                <input class="_input" type="number" id="age" name="age" /><br>
+
+                <!-- Кнопка для добавления элемента в модель -->
+                <button class="_button" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Поля ввода для модели Job -->
+    <div th:if="${modelName == 'job'}">
+        <form th:action="@{/add/job}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <div class="_container">
+                <div class="_subtitle">Job Details:</div>
+                <label class="_text" for="jobName">Name:</label>
+                <input class="_input" type="text" id="jobName" name="name" /><br>
+
+                <label class="_text" for="jobType">Type:</label>
+                <input class="_input" type="text" id="jobType" name="type" /><br>
+
+                <label class="_text" for="slogan">Slogan:</label>
+                <input class="_input" type="text" id="slogan" name="slogan" /><br>
+
+                <label class="_text" for="employees">Employees:</label>
+                <input class="_input" type="number" id="employees" name="employees" /><br>
+
+                <label class="_text" for="budget">Budget:</label>
+                <input class="_input" type="number" id="budget" name="budget" /><br>
+
+                <!-- Кнопка для добавления элемента в модель -->
+                <button class="_button" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Поля ввода для модели Pet -->
+    <div th:if="${modelName == 'pet'}">
+        <form th:action="@{/add/pet}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <div class="_container">
+                <div class="_subtitle">Pet Details:</div>
+                <label class="_text" for="petName">Name:</label>
+                <input class="_input" type="text" id="petName" name="name" /><br>
+
+                <label class="_text" for="breed">Breed:</label>
+                <input class="_input" type="text" id="breed" name="breed" /><br>
+
+                <label class="_text" for="petType">Type:</label>
+                <input class="_input" type="text" id="petType" name="type" /><br>
+
+                <label class="_text" for="petAge">Age:</label>
+                <input class="_input" type="number" id="petAge" name="age" /><br>
+
+                <label class="_text" for="gender">Gender:</label>
+                <input class="_input" type="text" id="gender" name="gender" /><br>
+
+                <!-- Кнопка для добавления элемента в модель -->
+                <button class="_button" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Поля ввода для модели Transport -->
+    <div th:if="${modelName == 'transport'}">
+        <form th:action="@{/add/transport}" method="post" th:object="${modelObject}">
+            <input type="hidden" th:name="modelName" th:value="${modelName}" />
+            <div class="_container">
+                <div class="_subtitle">Transport Details:</div>
+                <label class="_text" for="transportType">Name:</label>
+                <input class="_input" type="text" id="transportType" name="type" /><br>
+
+                <label class="_text" for="company">Type:</label>
+                <input class="_input" type="text" id="company" name="company" /><br>
+
+                <label class="_text" for="model">Slogan:</label>
+                <input class="_input" type="text" id="model" name="model" /><br>
+
+                <label class="_text" for="series">Employees:</label>
+                <input class="_input" type="number" id="series" name="series" /><br>
+
+                <label class="_text" for="color">Budget:</label>
+                <input class="_input" type="text" id="color" name="color" /><br>
+
+                <!-- Кнопка для добавления элемента в модель -->
+                <button class="_button" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
